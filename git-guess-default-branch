@@ -1,0 +1,26 @@
+#!/bin/bash
+
+override=$(git config guessDefaultBranch.override)
+
+if [[ -n "$override" ]]; then
+    echo "$override"
+    exit
+fi
+
+well_known=$(git config guessDefaultBranch.wellKnown)
+well_known=${well_known:-master main develop trunk}
+
+candidates=($(git branch --format='%(refname:short)' --list $well_known))
+
+for branch in $well_known; do
+    if [[ " ${candidates[@]} " = *" $branch "* ]]; then
+        echo "$branch"
+        exit
+    fi
+done
+
+fallback=$(git config guessDefaultBranch.fallback)
+fallback=${fallback:-$(git config init.defaultBranch)}
+fallback=${fallback:-master}
+
+echo "$fallback"
