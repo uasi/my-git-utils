@@ -42,3 +42,17 @@ master
 ```
 
 See [git-guess-default-branch.md](./git-guess-default-branch.md) for more information.
+
+## git-unkeep
+
+`git-unkeep` recursively searchs for `.gitkeep` files in the work tree,
+and if a directory containing a `.gitkeep` file has any entries other than the `.gitkeep` file itself,
+removes the `.gitkeep` file from that directory.
+
+`.gitkeep` is an unofficial convention to check-in otherwise empty directories.
+
+```
+% git unkeep
+rm 'db/migrations/.gitkeep'
+rm 'resources/.gitkeep'
+```
