@@ -56,3 +56,7 @@ removes the `.gitkeep` file from that directory.
 rm 'db/migrations/.gitkeep'
 rm 'resources/.gitkeep'
 ```
+
+## See also
+
+- [`uasi/gh-blame-pr`](https://github.com/uasi/gh-blame-pr): A GitHub CLI extension to open the most recent pull request that modified the specified file.
